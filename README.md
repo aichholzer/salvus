@@ -6,8 +6,10 @@
 Salvus
 =========
 
-Safely set and get any properties in any object. Anywhere.
-
 ```
 Silence is golden.
 ```
+
+Safely `set` and `get` any properties in any object. **Anywhere.**
+
+
