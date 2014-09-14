@@ -5,7 +5,6 @@
 
 Salvus
 =========
-
 ```
 Tu ne cede malis sed contra audentior ito.
 ```
