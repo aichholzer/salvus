@@ -10,6 +10,12 @@ Salvus
 Silence is golden.
 ```
 
-Safely `set` and `get` any properties in any object. **Anywhere.**
+Safely `set`, `get` and `remove` any properties in any object. **Anywhere.**
+
+### API
+
+ * **.noto()**
+ * **.lego()**
+ * **.purgo()**
 
 
