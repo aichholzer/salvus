@@ -7,7 +7,7 @@ Salvus
 =========
 
 ```
-Silence is golden.
+Tu ne cede malis sed contra audentior ito.
 ```
 
 Safely `set`, `get` and `remove` any properties in any object. **Anywhere.**
