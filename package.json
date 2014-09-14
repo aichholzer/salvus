@@ -1,0 +1,47 @@
+{
+  "name": "Salvus",
+  "description": "Safely set and get any properties in any object. Anywhere.",
+  "version": "0.0.5",
+  "main": "./lib/salvus.js",
+  "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
+  "contributors": [],
+  "maintainers": [],
+  "keywords": [
+    "object",
+    "properties",
+    "safely",
+    "nested"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:analogbird/Salvus.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "debug": "1.0.3",
+    "should": "~4.0.4"
+  },
+  "engines": {
+    "node": ">= 0.10.25"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R spec -t 5000",
+    "test-debug": "./node_modules/mocha/bin/mocha -R spec -t 5000",
+    "test-markdown": "./node_modules/mocha/bin/mocha -R markdown -t 5000 > Test.readme.md"
+  },
+  "bugs": {
+    "url": "https://github.com/analogbird/Salvus/issues"
+  },
+  "homepage": "https://github.com/analogbird/Salvus",
+  "_from": "salvus@^0.0.5",
+  "_npmUser": {
+    "name": "aichholzer",
+    "email": "theaichholzer@gmail.com"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
