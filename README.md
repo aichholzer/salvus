@@ -15,6 +15,7 @@ Safely `set`, `get` and `remove` any properties in any object. **Anywhere.**
 
  * **.noto()**
  * **.lego()**
+ * **.erado()**
  * **.purgo()**
 
 
