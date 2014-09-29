@@ -10,7 +10,7 @@ Tu ne cede malis sed contra audentior ito.
 ```
 
 Safely `set`, `get` and `remove` any property, in any object. *Anywhere.*
-Say goodbye to `undefined` exceptions and having to probe multiple properties to get what you actually want, let `Salvus` handle it for you.
+Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to probe multiple properties to get what you actually want, let `Salvus` handle it for you.
 
 
 ### API
