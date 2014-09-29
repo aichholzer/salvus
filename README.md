@@ -14,10 +14,147 @@ Safely `set`, `get` and `remove` any property, in any object. *Anywhere.*
 
 ### API
 
- * **.noto()**
- * **.lego()**
- * **.erado()**
- * **.purgo()**
+ * **.noto(string)** - Property (and value) to be written. Nested properties are also allowed.
+ 
+ * **.lego(string [, refer, strict, identifier])** - Property's value to read. Use `refer` (boolean) to identify undefined properties (Defaults to `false`). Use `strict` (boolean) to only return set values (Defaults to `false`). Use `identifier` (string) to prepend a custom identifier to identified undefined propertoes (`refer` must be set to `true`. Defaults to `!!`).
+ 
+ * **.erado(string | array [, root])** - Properties to delete. Use `root` to also remove the root element if it is empty. (Defaults to `false`)
+ 
+ * **.purgo()** - Purge the object; `''`, `undefined`, `null`, `{}` and `[]` will be deleted.
+
+
+### Examples
+
+####.noto() 
+
+```
+One property and its value
+
+var obj = {
+	'name': 'Salvus'
+};
+
+obj.noto('age:21');
+// => {
+	'name': 'Salvus',
+	'age': 21
+}
+```
+
+```
+Nested properties and a value
+
+var obj = {
+	'name': 'Salvus'
+};
+
+obj.noto('adress.city:Rome');
+// => {
+	'name': 'Salvus',
+	'address': {
+		'city': 'Rome'
+	}
+}
+```
+
+```
+Multiple nested properties and values
+
+var obj = {
+	'name': 'Salvus'
+};
+
+obj.noto('adress{city:Rome,street:Circus avenue,zipCode:78BC}');
+// => {
+	'name': 'Salvus',
+	'address': {
+		'city': 'Rome',
+		'street': 'Circus avenue',
+		'zipCode': '78BC'
+	}
+}
+```
+
+####.lego() 
+
+```
+var obj = {
+	'name': 'Salvus',
+	'age: '21',
+	'address: {
+		'city': 'Rome',
+		'street: 'Circus avenue',
+		'zipCode': '78BC',
+		'location': null
+	}
+};
+
+obj.lego('name');
+// => Salvus
+
+obj.lego('address.city');
+// => Rome
+
+obj.lego('address.country.code');
+// => undefined
+
+obj.lego('address.country.code', true);
+// => !!country
+
+obj.lego('address.country.code', true, false, 'NA_');
+// => NA_country
+
+obj.lego('address.location');
+// => null
+
+obj.lego('address.location', false, true);
+// => undefined
+```
+
+####.erado() 
+
+```
+var obj = {
+	'name': 'Salvus',
+	'age: '21',
+	'address: {
+		'city': 'Rome',
+		'street: 'Circus avenue',
+		'zipCode': '78BC'
+	}
+};
+
+obj.erado(['age', 'address.street', 'address.zipCode']);
+// => {
+	'name': 'Salvus',
+	'address': {
+		'city': 'Rome'
+	}
+}
+```
+
+####.purgo() 
+
+```
+var obj = {
+	'name': 'Salvus',
+	'age: '',
+	'address: {
+		'city': 'Rome',
+		'street: '',
+		'zipCode': ''
+	}
+};
+
+obj.purgo();
+// => {
+	'name': 'Salvus',
+	'address': {
+		'city': 'Rome'
+	}
+}
+```
+
 
 
 ### License (MIT)

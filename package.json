@@ -1,7 +1,7 @@
 {
   "name": "Salvus",
   "description": "Safely set and get any properties in any object. Anywhere.",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "main": "./lib/salvus.js",
   "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
   "contributors": [],
@@ -36,7 +36,7 @@
     "url": "https://github.com/analogbird/Salvus/issues"
   },
   "homepage": "https://github.com/analogbird/Salvus",
-  "_from": "salvus@^0.0.5",
+  "_from": "salvus@^0.0.9",
   "_npmUser": {
     "name": "aichholzer",
     "email": "theaichholzer@gmail.com"
