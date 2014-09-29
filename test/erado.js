@@ -20,3 +20,5 @@ var s = require('/Users/stefan.aichholzer/Development/Contributions/Salvus/lib/s
 	
 //console.log(obj.erado('name, age, place, address.country'));
 console.log(obj.erado(['name', 'age', 'place', 'address.country']));
+// console.log(obj.erado('name, age, place, address.country'));
+// console.log(obj.erado(['name', 'age', 'place', 'address.country']));
