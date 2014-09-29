@@ -14,7 +14,7 @@ Safely `set`, `get` and `remove` any property, in any object. *Anywhere.*
 
 ### API
 
- * **.noto(string)** - Property (and value) to be written. Nested properties are also allowed.
+ * **.noto(string)** - Property (and value) to be written, in the form of: `property:value`. Nested properties are also allowed (take a look at the examples)
  
  * **.lego(string [, refer, strict, identifier])** - Property's value to read. Use `refer` (boolean) to identify undefined properties (Defaults to `false`). Use `strict` (boolean) to only return set values (Defaults to `false`). Use `identifier` (string) to prepend a custom identifier to identified undefined propertoes (`refer` must be set to `true`. Defaults to `!!`).
  
