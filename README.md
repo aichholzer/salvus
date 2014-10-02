@@ -10,23 +10,27 @@ Tu ne cede malis sed contra audentior ito.
 ```
 
 Safely `set`, `get` and `remove` any property, in any object. *Anywhere.*
+<<<<<<< HEAD
 Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to probe multiple properties to get what you actually want, let `Salvus` handle it for you.
+=======
+Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to probe multiple properties to get what you actually want. Let `Salvus` handle it for you.
+>>>>>>> 44cf09d548bfdf417aa7b96af5a36032ac4b3969
 
 
 ### API
 
  * **.noto(string)** - Property (and value) to be written, in the form: `property:value`. Nested properties are also allowed (take a look at the examples)
- 
+
  * **.lego(string [, refer, strict, identifier])** - Property's value to read. Use `refer` (boolean) to identify undefined properties (Defaults to `false`). Use `strict` (boolean) to only return set values (Defaults to `false`). Use `identifier` (string) to prepend a custom identifier to identified undefined propertoes (`refer` must be set to `true`. Defaults to `!!`).
- 
+
  * **.erado(string | array [, root])** - Properties to delete. Use `root` to also remove the root element if it is empty. (Defaults to `false`)
- 
- * **.purgo()** - Purge the object; `''`, `undefined`, `null`, `{}` and `[]` will be deleted.
+
+ * **.purgo()** - Purge the object; `''`, `undefined`, `null`, `{}` and `[]` will be removed.
 
 
 ### Examples
 
-####.noto() 
+####.noto()
 
 ```
 One property and its value
@@ -76,7 +80,7 @@ obj.noto('adress{city:Rome,street:Circus avenue,zipCode:78BC}');
 }
 ```
 
-####.lego() 
+####.lego()
 
 ```
 var obj = {
@@ -112,7 +116,7 @@ obj.lego('address.location', false, true);
 // => undefined
 ```
 
-####.erado() 
+####.erado()
 
 ```
 var obj = {
@@ -132,9 +136,17 @@ obj.erado(['age', 'address.street', 'address.zipCode']);
 		'city': 'Rome'
 	}
 }
+
+obj.erado('age, address.street, address.zipCode');
+// => {
+	'name': 'Salvus',
+	'address': {
+		'city': 'Rome'
+	}
+}
 ```
 
-####.purgo() 
+####.purgo()
 
 ```
 var obj = {
