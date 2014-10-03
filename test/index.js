@@ -3,13 +3,13 @@
 require('../lib/salvus.js');
 var chai = require('chai'),
     expect = chai.expect,
-    object = { };
+    roman = { };
 
 describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
 
     beforeEach(function () {
 
-        object = {
+        roman = {
             name: 'Salvus',
             age: 21,
             rank: null,
@@ -31,15 +31,15 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
             it('Should return an object with the written property', function (done) {
 
                 // This property has a different value
-                expect(object.address.country).to.be.eql('IT');
+                expect(roman.address.country).to.be.eql('IT');
 
                 // Set from string
-                object.noto('address.country:Italy');
-                expect(object.address.country).to.be.eql('Italy');
+                roman.noto('address.country:Italy');
+                expect(roman.address.country).to.be.eql('Italy');
 
                 // Set from array
-                object.noto(['address.country:Italia']);
-                expect(object.address.country).to.be.eql('Italia');
+                roman.noto(['address.country:Italia']);
+                expect(roman.address.country).to.be.eql('Italia');
 
                 done();
             });
@@ -49,15 +49,15 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
             it('Should return an object with the written, nested, property', function (done) {
 
                 // This property does not exist
-                expect(object.lego('address.villa.apartment')).to.be.eql(undefined);
+                expect(roman.lego('address.villa.apartment')).to.be.eql(undefined);
 
                 // Set from string
-                object.noto('address.villa.apartment:1AC');
-                expect(object.address.villa.apartment).to.be.eql('1AC');
+                roman.noto('address.villa.apartment:1AC');
+                expect(roman.address.villa.apartment).to.be.eql('1AC');
 
                 // Set from array
-                object.noto(['address.villa.apartment:1BC']);
-                expect(object.address.villa.apartment).to.be.eql('1BC');
+                roman.noto(['address.villa.apartment:1BC']);
+                expect(roman.address.villa.apartment).to.be.eql('1BC');
 
                 done();
             });
@@ -67,24 +67,24 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
             it('Should return an object with the written nested properties', function (done) {
 
                 // These properties have different values
-                expect(object.address.city).to.be.eql('Rome');
-                expect(object.address.street).to.be.eql('Circus maximus');
-                expect(object.address.country).to.be.eql('IT');
-                expect(object.rank).to.be.eql(null);
-                expect(object.lego('skills.tools.mastered')).to.be.eql(undefined);
+                expect(roman.address.city).to.be.eql('Rome');
+                expect(roman.address.street).to.be.eql('Circus maximus');
+                expect(roman.address.country).to.be.eql('IT');
+                expect(roman.rank).to.be.eql(null);
+                expect(roman.lego('skills.tools.mastered')).to.be.eql(undefined);
 
-                object.noto(['address{city:Milano, street:Strada del Sole, country:Italia}', 'rank:emperor', 'skills.tools.mastered{sword:true, axe:true, spear:false, shield:true}']);
-                expect(object.address.city).to.be.eql('Milano');
-                expect(object.address.street).to.be.eql('Strada del Sole');
-                expect(object.address.country).to.be.eql('Italia');
-                expect(object.rank).to.be.eql('emperor');
-                expect(object.skills).to.be.instanceOf(Object);
-                expect(object.skills.tools).to.be.instanceOf(Object);
-                expect(object.skills.tools.mastered).to.be.instanceOf(Object);
-                expect(object.skills.tools.mastered.sword).to.be.eql(true);
-                expect(object.skills.tools.mastered.axe).to.be.eql(true);
-                expect(object.skills.tools.mastered.spear).to.be.eql(false);
-                expect(object.skills.tools.mastered.shield).to.be.eql(true);
+                roman.noto(['address{city:Milano, street:Strada del Sole, country:Italia}', 'rank:emperor', 'skills.tools.mastered{sword:true, axe:true, spear:false, shield:true}']);
+                expect(roman.address.city).to.be.eql('Milano');
+                expect(roman.address.street).to.be.eql('Strada del Sole');
+                expect(roman.address.country).to.be.eql('Italia');
+                expect(roman.rank).to.be.eql('emperor');
+                expect(roman.skills).to.be.instanceOf(Object);
+                expect(roman.skills.tools).to.be.instanceOf(Object);
+                expect(roman.skills.tools.mastered).to.be.instanceOf(Object);
+                expect(roman.skills.tools.mastered.sword).to.be.eql(true);
+                expect(roman.skills.tools.mastered.axe).to.be.eql(true);
+                expect(roman.skills.tools.mastered.spear).to.be.eql(false);
+                expect(roman.skills.tools.mastered.shield).to.be.eql(true);
 
                 done();
             });
@@ -102,7 +102,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Top level
-                value = object.lego('name');
+                value = roman.lego('name');
                 expect(value).to.be.eql('Salvus');
 
                 done();
@@ -115,7 +115,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Nested
-                value = object.lego('address.city');
+                value = roman.lego('address.city');
                 expect(value).to.be.eql('Rome');
 
                 done();
@@ -128,10 +128,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Undefined
-                value = object.lego('politics');
+                value = roman.lego('politics');
                 expect(value).to.be.eql(undefined);
 
-                value = object.lego('address.nation');
+                value = roman.lego('address.nation');
                 expect(value).to.be.eql(undefined);
 
                 done();
@@ -144,10 +144,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Null
-                value = object.lego('rank');
+                value = roman.lego('rank');
                 expect(value).to.be.eql(null);
 
-                value = object.lego('address.phone');
+                value = roman.lego('address.phone');
                 expect(value).to.be.eql(null);
 
                 done();
@@ -160,7 +160,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Identify the non-existing property
-                value = object.lego('address.nation', true);
+                value = roman.lego('address.nation', true);
                 expect(value).to.be.eql('!!nation');
 
                 done();
@@ -173,7 +173,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Custom non-existing property identifier
-                value = object.lego('address.nation', true, false, 'NA-');
+                value = roman.lego('address.nation', true, false, 'NA-');
                 expect(value).to.be.eql('NA-nation');
 
                 done();
@@ -186,10 +186,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
                 var value;
 
                 // Treat 'null' as 'undefined`
-                value = object.lego('rank', false, true);
+                value = roman.lego('rank', false, true);
                 expect(value).to.be.eql(undefined);
 
-                value = object.lego('address.nation', false, true);
+                value = roman.lego('address.nation', false, true);
                 expect(value).to.be.eql(undefined);
 
                 done();
@@ -205,10 +205,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
         describe('- Delete a single property', function () {
             it('Should return an object', function (done) {
 
-                expect(object.age).to.be.eql(21);
-                object.erado('age');
+                expect(roman.age).to.be.eql(21);
+                roman.erado('age');
 
-                expect(object.age).to.be.eql(undefined);
+                expect(roman.age).to.be.eql(undefined);
 
                 done();
             });
@@ -217,15 +217,15 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
         describe('- Delete multiple properties', function () {
             it('Should return an object', function (done) {
 
-                expect(object.name).to.be.eql('Salvus');
-                expect(object.age).to.be.eql(21);
-                expect(object.address.country).to.be.eql('IT');
+                expect(roman.name).to.be.eql('Salvus');
+                expect(roman.age).to.be.eql(21);
+                expect(roman.address.country).to.be.eql('IT');
 
-                object.erado(['name', 'age', 'address.country']);
+                roman.erado(['name', 'age', 'address.country']);
 
-                expect(object.name).to.be.eql(undefined);
-                expect(object.age).to.be.eql(undefined);
-                expect(object.address.country).to.be.eql(undefined);
+                expect(roman.name).to.be.eql(undefined);
+                expect(roman.age).to.be.eql(undefined);
+                expect(roman.address.country).to.be.eql(undefined);
 
                 done();
             });
@@ -234,20 +234,20 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
         describe('- Delete multiple -and sub- properties', function () {
             it('Should return an object', function (done) {
 
-                expect(object.name).to.be.eql('Salvus');
-                expect(object.age).to.be.eql(21);
-                expect(object.address.city).to.be.eql('Rome');
-                expect(object.address.country).to.be.eql('IT');
-                expect(object.address.street).to.be.eql('Circus maximus');
+                expect(roman.name).to.be.eql('Salvus');
+                expect(roman.age).to.be.eql(21);
+                expect(roman.address.city).to.be.eql('Rome');
+                expect(roman.address.country).to.be.eql('IT');
+                expect(roman.address.street).to.be.eql('Circus maximus');
 
-                object.erado(['name', 'age', 'address{city, country, street}']);
+                roman.erado(['name', 'age', 'address{city, country, street}']);
 
-                expect(object.name).to.be.eql(undefined);
-                expect(object.age).to.be.eql(undefined);
-                expect(object.address.city).to.be.eql(undefined);
-                expect(object.address.country).to.be.eql(undefined);
-                expect(object.address.street).to.be.eql(undefined);
-                expect(object.address.phone).to.be.eql(null);
+                expect(roman.name).to.be.eql(undefined);
+                expect(roman.age).to.be.eql(undefined);
+                expect(roman.address.city).to.be.eql(undefined);
+                expect(roman.address.country).to.be.eql(undefined);
+                expect(roman.address.street).to.be.eql(undefined);
+                expect(roman.address.phone).to.be.eql(null);
 
                 done();
             });
@@ -262,24 +262,24 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
         describe('- Purge the object', function () {
             it('Purges `undefined`, `null` `empty objects` and `empty arrays`.', function (done) {
 
-                expect(object.name).to.be.eql('Salvus');
-                expect(object.age).to.be.eql(21);
-                expect(object.rank).to.be.eql(null);
-                expect(object.address.city).to.be.eql('Rome');
-                expect(object.address.country).to.be.eql('IT');
-                expect(object.address.street).to.be.eql('Circus maximus');
-                expect(object.address.phone).to.be.eql(null);
+                expect(roman.name).to.be.eql('Salvus');
+                expect(roman.age).to.be.eql(21);
+                expect(roman.rank).to.be.eql(null);
+                expect(roman.address.city).to.be.eql('Rome');
+                expect(roman.address.country).to.be.eql('IT');
+                expect(roman.address.street).to.be.eql('Circus maximus');
+                expect(roman.address.phone).to.be.eql(null);
 
-                object.purgo();
+                roman.purgo();
 
-                expect(object.name).to.be.eql('Salvus');
-                expect(object.age).to.be.eql(21);
-                expect(object.rank).to.be.eql(undefined);
-                expect(object.address.city).to.be.eql('Rome');
-                expect(object.address.country).to.be.eql('IT');
-                expect(object.address.street).to.be.eql('Circus maximus');
-                expect(object.ancestors).to.be.eql(undefined);
-                expect(object.address.phone).to.be.eql(undefined);
+                expect(roman.name).to.be.eql('Salvus');
+                expect(roman.age).to.be.eql(21);
+                expect(roman.rank).to.be.eql(undefined);
+                expect(roman.address.city).to.be.eql('Rome');
+                expect(roman.address.country).to.be.eql('IT');
+                expect(roman.address.street).to.be.eql('Circus maximus');
+                expect(roman.ancestors).to.be.eql(undefined);
+                expect(roman.address.phone).to.be.eql(undefined);
 
                 done();
             });

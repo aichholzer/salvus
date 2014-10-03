@@ -28,9 +28,9 @@
         "node": ">= 0.10.25"
     },
     "scripts": {
-        "test": "./node_modules/mocha/bin/mocha -R spec -t 5000",
-        "test-debug": "./node_modules/mocha/bin/mocha -R spec -t 5000",
-        "test-markdown": "./node_modules/mocha/bin/mocha -R markdown -t 5000 > Test.readme.md"
+        "test": "./node_modules/mocha/bin/mocha -R spec -t 1000",
+        "test-debug": "./node_modules/mocha/bin/mocha -R spec -t 1000",
+        "test-markdown": "./node_modules/mocha/bin/mocha -R markdown -t 1000 > Test.readme.md"
     },
     "bugs": {
         "url": "https://github.com/analogbird/Salvus/issues"

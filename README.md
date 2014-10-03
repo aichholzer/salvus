@@ -19,7 +19,7 @@ Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to 
 
  * **.lego(string [, refer, strict, identifier])** - Property's value to read. Use `refer` (boolean) to identify undefined properties (Defaults to `false`). Use `strict` (boolean) to only return set values (Defaults to `false`). Use `identifier` (string) to prepend a custom identifier to identified undefined propertoes (`refer` must be set to `true`. Defaults to `!!`).
 
- * **.erado(string | array [, root])** - Properties to delete. Use `root` to also remove the root element if it is empty. (Defaults to `false`)
+ * **.erado(string | array)** - Properties to delete.
 
  * **.purgo()** - Purge the object; `''`, `undefined`, `null`, `{}` and `[]` will be removed.
 
