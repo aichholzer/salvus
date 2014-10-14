@@ -9,6 +9,8 @@ Salvus
 Tu ne cede malis sed contra audentior ito.
 ```
 
+[![Build Status](https://travis-ci.org/SalvusJS/Salvus.svg)](https://travis-ci.org/SalvusJS/Salvus)
+
 Safely `set`, `get` and `remove` any property, in any object. *Anywhere.*
 Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to probe multiple properties to get what you actually want. Let `Salvus` handle it for you.
 

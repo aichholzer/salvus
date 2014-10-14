@@ -1,7 +1,7 @@
 {
-    "name": "Salvus",
-    "description": "Safely set and get any properties in any object. Anywhere.",
-    "version": "0.1.0",
+    "name": "salvus",
+    "description": "Safely set, get and delete any property in any object. Anywhere.",
+    "version": "0.1.2",
     "main": "./lib/salvus.js",
     "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
     "contributors": [],
@@ -15,7 +15,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git@github.com:analogbird/Salvus.git"
+        "url": "git@github.com:SalvusJS/Salvus.git"
     },
     "license": "MIT",
     "dependencies": { },
@@ -33,10 +33,10 @@
         "test-markdown": "./node_modules/mocha/bin/mocha -R markdown -t 1000 > Test.readme.md"
     },
     "bugs": {
-        "url": "https://github.com/analogbird/Salvus/issues"
+        "url": "https://github.com/SalvusJS/Salvus/issues"
     },
-    "homepage": "https://github.com/analogbird/Salvus",
-    "_from": "salvus@^0.1.0",
+    "homepage": "https://github.com/SalvusJS/Salvus",
+    "_from": "salvus@^0.1.1",
     "_npmUser": {
         "name": "aichholzer",
         "email": "theaichholzer@gmail.com"
