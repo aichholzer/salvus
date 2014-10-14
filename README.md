@@ -10,163 +10,24 @@ Tu ne cede malis sed contra audentior ito.
 ```
 
 Safely `set`, `get` and `remove` any property, in any object. *Anywhere.*
-<<<<<<< HEAD
-Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to probe multiple properties to get what you actually want, let `Salvus` handle it for you.
-=======
 Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to probe multiple properties to get what you actually want. Let `Salvus` handle it for you.
->>>>>>> 44cf09d548bfdf417aa7b96af5a36032ac4b3969
 
 
 ### API
 
- * **.noto(string)** - Property (and value) to be written, in the form: `property:value`. Nested properties are also allowed (take a look at the examples)
+ * **.noto(string | array)** - Property (and value) to be written, in the form: `property:value`. Nested properties are also allowed (take a look at the examples)
 
  * **.lego(string [, refer, strict, identifier])** - Property's value to read. Use `refer` (boolean) to identify undefined properties (Defaults to `false`). Use `strict` (boolean) to only return set values (Defaults to `false`). Use `identifier` (string) to prepend a custom identifier to identified undefined propertoes (`refer` must be set to `true`. Defaults to `!!`).
 
- * **.erado(string | array [, root])** - Properties to delete. Use `root` to also remove the root element if it is empty. (Defaults to `false`)
+ * **.erado(string | array)** - Properties to delete.
 
  * **.purgo()** - Purge the object; `''`, `undefined`, `null`, `{}` and `[]` will be removed.
 
 
 ### Examples
 
-####.noto()
-
-```
-One property and its value
-
-var obj = {
-	'name': 'Salvus'
-};
-
-obj.noto('age:21');
-// => {
-	'name': 'Salvus',
-	'age': 21
-}
-```
-
-```
-Nested properties and a value
-
-var obj = {
-	'name': 'Salvus'
-};
-
-obj.noto('adress.city:Rome');
-// => {
-	'name': 'Salvus',
-	'address': {
-		'city': 'Rome'
-	}
-}
-```
-
-```
-Multiple nested properties and values
-
-var obj = {
-	'name': 'Salvus'
-};
-
-obj.noto('adress{city:Rome,street:Circus avenue,zipCode:78BC}');
-// => {
-	'name': 'Salvus',
-	'address': {
-		'city': 'Rome',
-		'street': 'Circus avenue',
-		'zipCode': '78BC'
-	}
-}
-```
-
-####.lego()
-
-```
-var obj = {
-	'name': 'Salvus',
-	'age: '21',
-	'address: {
-		'city': 'Rome',
-		'street: 'Circus avenue',
-		'zipCode': '78BC',
-		'location': null
-	}
-};
-
-obj.lego('name');
-// => Salvus
-
-obj.lego('address.city');
-// => Rome
-
-obj.lego('address.country.code');
-// => undefined
-
-obj.lego('address.country.code', true);
-// => !!country
-
-obj.lego('address.country.code', true, false, 'NA_');
-// => NA_country
-
-obj.lego('address.location');
-// => null
-
-obj.lego('address.location', false, true);
-// => undefined
-```
-
-####.erado()
-
-```
-var obj = {
-	'name': 'Salvus',
-	'age: '21',
-	'address: {
-		'city': 'Rome',
-		'street: 'Circus avenue',
-		'zipCode': '78BC'
-	}
-};
-
-obj.erado(['age', 'address.street', 'address.zipCode']);
-// => {
-	'name': 'Salvus',
-	'address': {
-		'city': 'Rome'
-	}
-}
-
-obj.erado('age, address.street, address.zipCode');
-// => {
-	'name': 'Salvus',
-	'address': {
-		'city': 'Rome'
-	}
-}
-```
-
-####.purgo()
-
-```
-var obj = {
-	'name': 'Salvus',
-	'age: '',
-	'address: {
-		'city': 'Rome',
-		'street: '',
-		'zipCode': ''
-	}
-};
-
-obj.purgo();
-// => {
-	'name': 'Salvus',
-	'address': {
-		'city': 'Rome'
-	}
-}
-```
+Take a look at the `examples` in the `test` folder.
+You are also welcome to run `npm test`
 
 
 

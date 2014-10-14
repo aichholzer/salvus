@@ -1,24 +1,21 @@
-var s = require('/Users/stefan.aichholzer/Development/Contributions/Salvus/lib/salvus'),
-	obj = {
-		name: 'Ice',
-		age: '12',
-		place: '',
-		placea: null,
-		placeb: undefined,
-		address: {
-			city: 'Rome',
-			country: 'IT',
-			places: [1, 2, 4],
-			roads: {
-				main: 'Street',
-				second: 'Uptown'
-			}
-		}
-	};
-	
-	
-	
-//console.log(obj.erado('name, age, place, address.country'));
-console.log(obj.erado(['name', 'age', 'place', 'address.country']));
-// console.log(obj.erado('name, age, place, address.country'));
-// console.log(obj.erado(['name', 'age', 'place', 'address.country']));
+require('../lib/salvus.js');
+var obj = {
+    name: 'Salvus',
+    age: '21',
+    address: {
+        city: 'Rome',
+        country: 'IT',
+        street: 'Circus maximus'
+    }
+};
+
+
+// One
+obj.erado('name');
+obj.erado(['name']);
+
+// Multiple
+obj.erado(['name', 'age', 'address.country']);
+
+// Sub-properties
+obj.erado(['name', 'age', 'address{country, street}']);

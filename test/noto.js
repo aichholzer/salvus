@@ -1,15 +1,15 @@
-var s = require('/Users/stefan.aichholzer/Development/Contributions/Salvus/lib/salvus'),
-	obj = {
-		name: 'Ice'
-	};
-	
-
-//console.log(obj.noto('age:35'));
-//console.log(obj.noto('a.b[a:2,c:3,name:pepe]'));
-//console.log(obj.noto('a.b(a:2,c:3,name:pepe)'));
-//console.log(obj.noto('a.b{a:2,c:3,name:pepe}'));
+require('../lib/salvus.js');
+var obj = {
+    name: 'Salvus'
+};
 
 
-var s = 'a.b{a:2,c:3,name:pepe}'.match(/\[([^\]]+)]|\(([^)]+)\)|{([^}]+)}/);
+// One
+obj.noto('age:21');
+obj.noto(['age:21']);
 
-console.log(s);
+// Multiple
+obj.noto(['city:Rome', 'street:Circus maximus']);
+
+// Sub-properties
+obj.noto(['address{city:Rome, street:Circus maximus, country:IT}', 'rank:emperor']);
