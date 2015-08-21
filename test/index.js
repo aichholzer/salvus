@@ -1,9 +1,9 @@
 'use strict';
 
-require('../lib/salvus.js');
-var chai = require('chai'),
-    expect = chai.expect,
-    roman = { };
+
+require('../lib/salvus.js').applico();
+var expect = require('chai').expect,
+    roman = {};
 
 describe('Salvus: Tu ne cede malis sed contra audentior ito.', function () {
 

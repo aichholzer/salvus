@@ -24,6 +24,8 @@ Say goodbye to those (ugly and unfriendly) `undefined` exceptions and having to 
  * **.erado(string | array)** - Properties to delete.
 
  * **.purgo()** - Purge the object; `''`, `undefined`, `null`, `{}` and `[]` will be removed.
+ 
+ * **.applico()** - Attach Salvus' methods as object's prototypes.
 
 
 ### Examples
