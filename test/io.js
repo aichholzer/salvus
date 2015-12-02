@@ -1,7 +1,7 @@
 'use strict';
 
 
-var salvus = require('../lib/io.salvus.js'),
+var salvus = require('../lib/io'),
     expect = require('chai').expect,
     roman = {};
 

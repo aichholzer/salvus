@@ -1,7 +1,7 @@
 'use strict';
 
 
-require('../lib/salvus.js');
+require('../lib/');
 var expect = require('chai').expect,
     roman = {};
 
