@@ -1,7 +1,7 @@
 {
   "name": "salvus",
   "description": "Safely set, get and delete any property in any object. Anywhere.",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "main": "./lib/salvus.js",
   "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
   "contributors": [],
@@ -18,14 +18,14 @@
     "url": "git@github.com:SalvusJS/Salvus.git"
   },
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "chai": "^1.10.0",
-    "debug": "^1.0.3",
-    "mocha": "^1.20.1"
+  "dependencies": {
+    "chai": "^3.4.1",
+    "debug": "^2.2.0",
+    "mocha": "^2.3.4"
   },
+  "devDependencies": {},
   "engines": {
-    "node": ">= 0.10.36"
+    "node": ">= 5.0.0"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha -R spec -t 1000",
@@ -36,12 +36,12 @@
     "url": "https://github.com/SalvusJS/Salvus/issues"
   },
   "homepage": "https://github.com/SalvusJS/Salvus",
-  "_from": "salvus@^0.1.5",
+  "_from": "salvus@^0.1.6",
   "_npmUser": {
     "name": "aichholzer",
     "email": "theaichholzer@gmail.com"
   },
   "directories": {
-    "test": "test"
+    "test": "./test"
   }
 }

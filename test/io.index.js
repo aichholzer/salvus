@@ -1,11 +1,11 @@
 'use strict';
 
 
-require('../lib/salvus.js');
-var expect = require('chai').expect,
+var salvus = require('../lib/io.salvus.js'),
+    expect = require('chai').expect,
     roman = {};
 
-describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as object\'s prototype.\n', function () {
+describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as stand-alone module.\n', function () {
 
     beforeEach(function () {
 
@@ -34,11 +34,11 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 expect(roman.address.country).to.be.eql('IT');
 
                 // Set from string
-                roman.noto('address.country:Italy');
+                salvus.noto(roman, 'address.country:Italy');
                 expect(roman.address.country).to.be.eql('Italy');
 
                 // Set from array
-                roman.noto(['address.country:Italia']);
+                salvus.noto(roman, ['address.country:Italia']);
                 expect(roman.address.country).to.be.eql('Italia');
 
                 done();
@@ -49,14 +49,14 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
             it('Should return an object with the written, nested, property', function (done) {
 
                 // This property does not exist
-                expect(roman.lego('address.villa.apartment')).to.be.eql(undefined);
+                expect(salvus.lego(roman, 'address.villa.apartment')).to.be.eql(undefined);
 
                 // Set from string
-                roman.noto('address.villa.apartment:1AC');
+                salvus.noto(roman, 'address.villa.apartment:1AC');
                 expect(roman.address.villa.apartment).to.be.eql('1AC');
 
                 // Set from array
-                roman.noto(['address.villa.apartment:1BC']);
+                salvus.noto(roman, ['address.villa.apartment:1BC']);
                 expect(roman.address.villa.apartment).to.be.eql('1BC');
 
                 done();
@@ -71,9 +71,9 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 expect(roman.address.street).to.be.eql('Circus maximus');
                 expect(roman.address.country).to.be.eql('IT');
                 expect(roman.rank).to.be.eql(null);
-                expect(roman.lego('skills.tools.mastered')).to.be.eql(undefined);
+                expect(salvus.lego(roman, 'skills.tools.mastered')).to.be.eql(undefined);
 
-                roman.noto(['address{city:Milano, street:Strada del Sole, country:Italia}', 'rank:emperor', 'skills.tools.mastered{sword:true, axe:true, spear:false, shield:true}']);
+                salvus.noto(roman, ['address{city:Milano, street:Strada del Sole, country:Italia}', 'rank:emperor', 'skills.tools.mastered{sword:true, axe:true, spear:false, shield:true}']);
                 expect(roman.address.city).to.be.eql('Milano');
                 expect(roman.address.street).to.be.eql('Strada del Sole');
                 expect(roman.address.country).to.be.eql('Italia');
@@ -102,7 +102,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Top level
-                value = roman.lego('name');
+                value = salvus.lego(roman, 'name');
                 expect(value).to.be.eql('Salvus');
 
                 done();
@@ -115,7 +115,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Nested
-                value = roman.lego('address.city');
+                value = salvus.lego(roman, 'address.city');
                 expect(value).to.be.eql('Rome');
 
                 done();
@@ -128,10 +128,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Undefined
-                value = roman.lego('politics');
+                value = salvus.lego(roman, 'politics');
                 expect(value).to.be.eql(undefined);
 
-                value = roman.lego('address.nation');
+                value = salvus.lego(roman, 'address.nation');
                 expect(value).to.be.eql(undefined);
 
                 done();
@@ -144,10 +144,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Null
-                value = roman.lego('rank');
+                value = salvus.lego(roman, 'rank');
                 expect(value).to.be.eql(null);
 
-                value = roman.lego('address.phone');
+                value = salvus.lego(roman, 'address.phone');
                 expect(value).to.be.eql(null);
 
                 done();
@@ -160,7 +160,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Identify the non-existing property
-                value = roman.lego('address.nation', true);
+                value = salvus.lego(roman, 'address.nation', true);
                 expect(value).to.be.eql('!!nation');
 
                 done();
@@ -173,7 +173,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Custom non-existing property identifier
-                value = roman.lego('address.nation', true, false, 'NA-');
+                value = salvus.lego(roman, 'address.nation', true, false, 'NA-');
                 expect(value).to.be.eql('NA-nation');
 
                 done();
@@ -186,10 +186,10 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 var value;
 
                 // Treat 'null' as 'undefined`
-                value = roman.lego('rank', false, true);
+                value = salvus.lego(roman, 'rank', false, true);
                 expect(value).to.be.eql(undefined);
 
-                value = roman.lego('address.nation', false, true);
+                value = salvus.lego(roman, 'address.nation', false, true);
                 expect(value).to.be.eql(undefined);
 
                 done();
@@ -206,7 +206,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
             it('Should return an object', function (done) {
 
                 expect(roman.age).to.be.eql(21);
-                roman.erado('age');
+                salvus.erado(roman, 'age');
 
                 expect(roman.age).to.be.eql(undefined);
 
@@ -221,7 +221,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 expect(roman.age).to.be.eql(21);
                 expect(roman.address.country).to.be.eql('IT');
 
-                roman.erado(['name', 'age', 'address.country']);
+                salvus.erado(roman, ['name', 'age', 'address.country']);
 
                 expect(roman.name).to.be.eql(undefined);
                 expect(roman.age).to.be.eql(undefined);
@@ -240,7 +240,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 expect(roman.address.country).to.be.eql('IT');
                 expect(roman.address.street).to.be.eql('Circus maximus');
 
-                roman.erado(['name', 'age', 'address{city, country, street}']);
+                salvus.erado(roman, ['name', 'age', 'address{city, country, street}']);
 
                 expect(roman.name).to.be.eql(undefined);
                 expect(roman.age).to.be.eql(undefined);
@@ -270,7 +270,7 @@ describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as objec
                 expect(roman.address.street).to.be.eql('Circus maximus');
                 expect(roman.address.phone).to.be.eql(null);
 
-                roman.purgo();
+                salvus.purgo(roman);
 
                 expect(roman.name).to.be.eql('Salvus');
                 expect(roman.age).to.be.eql(21);
