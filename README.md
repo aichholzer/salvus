@@ -24,7 +24,7 @@ require('salvus');
 
 var object = {
 	name: 'soldier'
-}
+};
 
 object.lego('name');
 ```
@@ -41,11 +41,10 @@ object.lego('name');
 ### API (io, stand-alond use)
 
 ```
-salvus = require('io.salvus');
-
-var object = {
-	name: 'soldier'
-}
+var salvus = require('io.salvus'),
+	object = {
+		name: 'soldier'
+	};
 
 salvus.lego(object, 'name');
 ```
