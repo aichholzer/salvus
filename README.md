@@ -41,7 +41,7 @@ object.lego('name');
 ### API (io, stand-alond use)
 
 ```
-var salvus = require('io.salvus'),
+var salvus = require('salvus/lib/io'),
 	object = {
 		name: 'soldier'
 	};
