@@ -1,290 +1,181 @@
 'use strict';
 
 
-require('../lib/');
-var expect = require('chai').expect,
+require('../lib/index');
+let should = require('should'),
     roman = {};
 
-describe('Salvus: Tu ne cede malis sed contra audentior ito.\n  Testing as object\'s prototype.\n', function () {
+beforeEach(() => {
+    roman = {
+        name: 'Salvus',
+        age: 21,
+        rank: null,
+        ancestors: '',
+        address: {
+            city: 'Rome',
+            country: 'IT',
+            street: 'Circus maximus',
+            phone: null
+        }
+    };
+});
 
-    beforeEach(function () {
+describe('{}.noto()', () => {
 
-        roman = {
-            name: 'Salvus',
-            age: 21,
-            rank: null,
-            ancestors: '',
-            address: {
-                city: 'Rome',
-                country: 'IT',
-                street: 'Circus maximus',
-                phone: null
-            }
-        };
+    it('Write property values', done => {
+        roman.noto('address.country:Italy');
+        should(roman.address.country).eql('Italy');
 
+        roman.noto(['address.country:Italia']);
+        should(roman.address.country).eql('Italia');
+
+        done();
     });
 
-    // Write
-    describe('{}.noto()', function () {
+    it('Write new property and values', done => {
 
-        describe('- Set a single property', function () {
-            it('Should return an object with the written property', function (done) {
+        should(roman.lego('address.villa.apartment')).eql(undefined);
 
-                // This property has a different value
-                expect(roman.address.country).to.be.eql('IT');
+        // From string
+        roman.noto('address.villa.apartment:Top level');
+        should(roman.address.villa.apartment).eql('Top level');
 
-                // Set from string
-                roman.noto('address.country:Italy');
-                expect(roman.address.country).to.be.eql('Italy');
+        // From array
+        roman.noto(['address.villa.apartment:Bottom level']);
+        should(roman.address.villa.apartment).eql('Bottom level');
 
-                // Set from array
-                roman.noto(['address.country:Italia']);
-                expect(roman.address.country).to.be.eql('Italia');
-
-                done();
-            });
-        });
-
-        describe('- Set a single, nested, property', function () {
-            it('Should return an object with the written, nested, property', function (done) {
-
-                // This property does not exist
-                expect(roman.lego('address.villa.apartment')).to.be.eql(undefined);
-
-                // Set from string
-                roman.noto('address.villa.apartment:1AC');
-                expect(roman.address.villa.apartment).to.be.eql('1AC');
-
-                // Set from array
-                roman.noto(['address.villa.apartment:1BC']);
-                expect(roman.address.villa.apartment).to.be.eql('1BC');
-
-                done();
-            });
-        });
-
-        describe('- Set nested properties', function () {
-            it('Should return an object with the written nested properties', function (done) {
-
-                // These properties have different values
-                expect(roman.address.city).to.be.eql('Rome');
-                expect(roman.address.street).to.be.eql('Circus maximus');
-                expect(roman.address.country).to.be.eql('IT');
-                expect(roman.rank).to.be.eql(null);
-                expect(roman.lego('skills.tools.mastered')).to.be.eql(undefined);
-
-                roman.noto(['address{city:Milano, street:Strada del Sole, country:Italia}', 'rank:emperor', 'skills.tools.mastered{sword:true, axe:true, spear:false, shield:true}']);
-                expect(roman.address.city).to.be.eql('Milano');
-                expect(roman.address.street).to.be.eql('Strada del Sole');
-                expect(roman.address.country).to.be.eql('Italia');
-                expect(roman.rank).to.be.eql('emperor');
-                expect(roman.skills).to.be.instanceOf(Object);
-                expect(roman.skills.tools).to.be.instanceOf(Object);
-                expect(roman.skills.tools.mastered).to.be.instanceOf(Object);
-                expect(roman.skills.tools.mastered.sword).to.be.eql(true);
-                expect(roman.skills.tools.mastered.axe).to.be.eql(true);
-                expect(roman.skills.tools.mastered.spear).to.be.eql(false);
-                expect(roman.skills.tools.mastered.shield).to.be.eql(true);
-
-                done();
-            });
-        });
-
+        done();
     });
 
+    it('Write nested property and values', done => {
 
-    // Read
-    describe('{}.lego()', function () {
+        should(roman.address.city).eql('Rome');
+        should(roman.address.street).eql('Circus maximus');
+        should(roman.address.country).eql('IT');
+        should(roman.rank).eql(null);
+        should(roman.lego('skills.tools.mastered')).eql(undefined);
 
-        describe('- Read from a single property', function () {
-            it('Should return a value', function (done) {
+        roman.noto(['address{city:Milano, street:Strada del Sole, country:Italia}', 'rank:emperor', 'skills.tools.mastered{sword:true, axe:true, spear:false, shield:true}']);
+        should(roman.address.city).eql('Milano');
+        should(roman.address.street).eql('Strada del Sole');
+        should(roman.address.country).eql('Italia');
+        should(roman.rank).eql('emperor');
+        should(roman.skills).be.instanceOf(Object);
+        should(roman.skills.tools).be.instanceOf(Object);
+        should(roman.skills.tools.mastered).be.instanceOf(Object);
+        should(roman.skills.tools.mastered.sword).eql(true);
+        should(roman.skills.tools.mastered.axe).eql(true);
+        should(roman.skills.tools.mastered.spear).eql(false);
+        should(roman.skills.tools.mastered.shield).eql(true);
 
-                var value;
+        done();
+    });
+});
 
-                // Top level
-                value = roman.lego('name');
-                expect(value).to.be.eql('Salvus');
+describe('{}.lego()', () => {
 
-                done();
-            });
-        });
-
-        describe('- Read from a nested property', function () {
-            it('Should return a value', function (done) {
-
-                var value;
-
-                // Nested
-                value = roman.lego('address.city');
-                expect(value).to.be.eql('Rome');
-
-                done();
-            });
-        });
-
-        describe('- Read undefined properties', function () {
-            it('Non existing properties are `undefined`', function (done) {
-
-                var value;
-
-                // Undefined
-                value = roman.lego('politics');
-                expect(value).to.be.eql(undefined);
-
-                value = roman.lego('address.nation');
-                expect(value).to.be.eql(undefined);
-
-                done();
-            });
-        });
-
-        describe('- Read null properties', function () {
-            it('Properties with values of `null` are returned as `null`', function (done) {
-
-                var value;
-
-                // Null
-                value = roman.lego('rank');
-                expect(value).to.be.eql(null);
-
-                value = roman.lego('address.phone');
-                expect(value).to.be.eql(null);
-
-                done();
-            });
-        });
-
-        describe('- Identify non-existing properties', function () {
-            it('Identify which property is `undefined`', function (done) {
-
-                var value;
-
-                // Identify the non-existing property
-                value = roman.lego('address.nation', true);
-                expect(value).to.be.eql('!!nation');
-
-                done();
-            });
-        });
-
-        describe('- Identify non-existing properties with custom label', function () {
-            it('Identify which property is `undefined`', function (done) {
-
-                var value;
-
-                // Custom non-existing property identifier
-                value = roman.lego('address.nation', true, false, 'NA-');
-                expect(value).to.be.eql('NA-nation');
-
-                done();
-            });
-        });
-
-        describe('- Read `null` as `undefined`', function () {
-            it('Treat `null` as `undefined`', function (done) {
-
-                var value;
-
-                // Treat 'null' as 'undefined`
-                value = roman.lego('rank', false, true);
-                expect(value).to.be.eql(undefined);
-
-                value = roman.lego('address.nation', false, true);
-                expect(value).to.be.eql(undefined);
-
-                done();
-            });
-        });
-
+    it('Read values', done => {
+        should(roman.lego('name')).eql('Salvus');
+        should(roman.lego('address.city')).eql('Rome');
+        done();
     });
 
-
-    // Delete
-    describe('{}.erado()', function () {
-
-        describe('- Delete a single property', function () {
-            it('Should return an object', function (done) {
-
-                expect(roman.age).to.be.eql(21);
-                roman.erado('age');
-
-                expect(roman.age).to.be.eql(undefined);
-
-                done();
-            });
-        });
-
-        describe('- Delete multiple properties', function () {
-            it('Should return an object', function (done) {
-
-                expect(roman.name).to.be.eql('Salvus');
-                expect(roman.age).to.be.eql(21);
-                expect(roman.address.country).to.be.eql('IT');
-
-                roman.erado(['name', 'age', 'address.country']);
-
-                expect(roman.name).to.be.eql(undefined);
-                expect(roman.age).to.be.eql(undefined);
-                expect(roman.address.country).to.be.eql(undefined);
-
-                done();
-            });
-        });
-
-        describe('- Delete multiple -and sub- properties', function () {
-            it('Should return an object', function (done) {
-
-                expect(roman.name).to.be.eql('Salvus');
-                expect(roman.age).to.be.eql(21);
-                expect(roman.address.city).to.be.eql('Rome');
-                expect(roman.address.country).to.be.eql('IT');
-                expect(roman.address.street).to.be.eql('Circus maximus');
-
-                roman.erado(['name', 'age', 'address{city, country, street}']);
-
-                expect(roman.name).to.be.eql(undefined);
-                expect(roman.age).to.be.eql(undefined);
-                expect(roman.address.city).to.be.eql(undefined);
-                expect(roman.address.country).to.be.eql(undefined);
-                expect(roman.address.street).to.be.eql(undefined);
-                expect(roman.address.phone).to.be.eql(null);
-
-                done();
-            });
-        });
-
+    it('Read values from non-existing properties', done => {
+        should(roman.lego('politics')).eql(undefined);
+        should(roman.lego('address.nation')).eql(undefined);
+        done();
     });
 
-
-    // Purgo
-    describe('{}.purgo()', function () {
-
-        describe('- Purge the object', function () {
-            it('Purges `undefined`, `null` `empty objects` and `empty arrays`.', function (done) {
-
-                expect(roman.name).to.be.eql('Salvus');
-                expect(roman.age).to.be.eql(21);
-                expect(roman.rank).to.be.eql(null);
-                expect(roman.address.city).to.be.eql('Rome');
-                expect(roman.address.country).to.be.eql('IT');
-                expect(roman.address.street).to.be.eql('Circus maximus');
-                expect(roman.address.phone).to.be.eql(null);
-
-                roman.purgo();
-
-                expect(roman.name).to.be.eql('Salvus');
-                expect(roman.age).to.be.eql(21);
-                expect(roman.rank).to.be.eql(undefined);
-                expect(roman.address.city).to.be.eql('Rome');
-                expect(roman.address.country).to.be.eql('IT');
-                expect(roman.address.street).to.be.eql('Circus maximus');
-                expect(roman.ancestors).to.be.eql(undefined);
-                expect(roman.address.phone).to.be.eql(undefined);
-
-                done();
-            });
-        });
-
+    it('Read null values from existing properties', done => {
+        should(roman.lego('rank')).eql(null);
+        should(roman.lego('address.phone')).eql(null);
+        done();
     });
 
+    it('Identify the undefined property', done => {
+        should(roman.lego('address.nation', true)).eql('!!nation');
+        done();
+    });
+
+    it('Identify the undefined property with custom identifier', done => {
+        should(roman.lego('address.nation', true, false, 'NA-')).eql('NA-nation');
+        done();
+    });
+
+    it('Treat null values as undefined', done => {
+        should(roman.lego('rank', false, true)).eql(undefined);
+        should(roman.lego('address.nation', false, true)).eql(undefined);
+        done();
+    });
+});
+
+describe('{}.erado()', () => {
+
+    it('Should return an object', done => {
+        should(roman.age).eql(21);
+
+        roman.erado('age');
+        should(roman.age).eql(undefined);
+
+        done();
+    });
+
+    it('Should return an object', done => {
+
+        should(roman.name).eql('Salvus');
+        should(roman.age).eql(21);
+        should(roman.address.country).eql('IT');
+
+        roman.erado(['name', 'age', 'address.country']);
+        should(roman.name).eql(undefined);
+        should(roman.age).eql(undefined);
+        should(roman.address.country).eql(undefined);
+
+        done();
+    });
+
+    it('Should return an object', done => {
+
+        should(roman.name).eql('Salvus');
+        should(roman.age).eql(21);
+        should(roman.address.city).eql('Rome');
+        should(roman.address.country).eql('IT');
+        should(roman.address.street).eql('Circus maximus');
+
+        roman.erado(['name', 'age', 'address{city, country, street}']);
+        should(roman.name).eql(undefined);
+        should(roman.age).eql(undefined);
+        should(roman.address.city).eql(undefined);
+        should(roman.address.country).eql(undefined);
+        should(roman.address.street).eql(undefined);
+        should(roman.address.phone).eql(null);
+
+        done();
+    });
+});
+
+describe('{}.purgo()', () => {
+
+    it('Purge undefined, null, empty objects, empty arrays', done => {
+
+        should(roman.name).eql('Salvus');
+        should(roman.age).eql(21);
+        should(roman.rank).eql(null);
+        should(roman.address.city).eql('Rome');
+        should(roman.address.country).eql('IT');
+        should(roman.address.street).eql('Circus maximus');
+        should(roman.address.phone).eql(null);
+
+        roman.purgo();
+        should(roman.name).eql('Salvus');
+        should(roman.age).eql(21);
+        should(roman.rank).eql(undefined);
+        should(roman.address.city).eql('Rome');
+        should(roman.address.country).eql('IT');
+        should(roman.address.street).eql('Circus maximus');
+        should(roman.ancestors).eql(undefined);
+        should(roman.address.phone).eql(undefined);
+
+        done();
+    });
 });
