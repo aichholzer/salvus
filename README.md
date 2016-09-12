@@ -6,7 +6,7 @@ Tu ne cede malis sed contra audentior ito.
 [![Build Status](https://travis-ci.org/aichholzer/salvus.svg?branch=master)](https://travis-ci.org/aichholzer/salvus)
 [![Dependency status](https://gemnasium.com/badges/github.com/aichholzer/roli.svg)](https://gemnasium.com/github.com/aichholzer/roli)
 [![Downloads](https://img.shields.io/npm/dt/salvus.svg)](https://www.npmjs.com/package/salvus)
-[![Always useful](https://img.shields.io/badge/always-useful-ff6400.svg)](https://github.com/aichholzer/salvus)
+[![Always useful](https://img.shields.io/badge/always-useful-green.svg)](https://github.com/aichholzer/salvus)
 
 Safely `set`, `get` and `remove` any property, in any object.
 
