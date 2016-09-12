@@ -1,47 +1,52 @@
 {
-  "name": "salvus",
-  "description": "Safely set, get and delete any property in any object. Anywhere.",
-  "version": "0.2.5",
-  "main": "./lib/index.js",
-  "author": "Stefan Aichholzer <theaichholzer@gmail.com>",
-  "contributors": [],
-  "maintainers": [],
-  "keywords": [
-    "object",
-    "property",
-    "properties",
-    "safely",
-    "nested"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:SalvusJS/Salvus.git"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "chai": "^3.4.1",
-    "debug": "^2.2.0",
-    "mocha": "^2.3.4"
-  },
-  "devDependencies": {},
-  "engines": {
-    "node": ">= 5.0.0"
-  },
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -R spec -t 1000",
-    "test-debug": "./node_modules/mocha/bin/mocha -R spec -t 1000",
-    "test-markdown": "./node_modules/mocha/bin/mocha -R markdown -t 1000 > Test.readme.md"
-  },
-  "bugs": {
-    "url": "https://github.com/SalvusJS/Salvus/issues"
-  },
-  "homepage": "https://github.com/SalvusJS/Salvus",
-  "_from": "salvus@^0.2.4",
-  "_npmUser": {
-    "name": "aichholzer",
-    "email": "theaichholzer@gmail.com"
-  },
-  "directories": {
-    "test": "./test"
-  }
+    "name": "salvus",
+    "description": "Safely set, get and delete any property in any object.",
+    "version": "0.2.6",
+    "main": "./lib/index.js",
+    "author": {
+        "name": "Stefan Aichholzer",
+        "email": "theaichholzer@gmail.com",
+        "url": "https://github.com/aichholzer"
+    },
+    "contributors": [],
+    "maintainers": [],
+    "keywords": [
+        "object",
+        "property",
+        "properties",
+        "safely",
+        "nested",
+        "read",
+        "set",
+        "delete"
+    ],
+    "homepage": "https://github.com/aichholzer/salvus",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:aichholzer/salvus.git"
+    },
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "jscs": "^3.0.7",
+        "mocha": "^2.5.3",
+        "should": "^11.1.0"
+    },
+    "engines": {
+        "node": ">=6"
+    },
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha -R progress -t 1000"
+    },
+    "bugs": {
+        "url": "https://github.com/aichholzer/salvus/issues"
+    },
+    "_from": "salvus@^0.2.5",
+    "_npmUser": {
+        "name": "aichholzer",
+        "email": "theaichholzer@gmail.com"
+    },
+    "directories": {
+        "test": "test"
+    }
 }
