@@ -1,7 +1,7 @@
 {
     "name": "salvus",
     "description": "Safely set, get and delete any property in any object.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "./lib/index.js",
     "author": {
         "name": "Stefan Aichholzer",
@@ -41,7 +41,7 @@
     "bugs": {
         "url": "https://github.com/aichholzer/salvus/issues"
     },
-    "_from": "salvus@^1.0.0",
+    "_from": "salvus@^1.0.1",
     "_npmUser": {
         "name": "aichholzer",
         "email": "theaichholzer@gmail.com"
