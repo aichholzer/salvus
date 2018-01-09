@@ -1,7 +1,7 @@
 {
     "name": "salvus",
     "description": "Safely set, get and delete any property in any object.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "./lib/index.js",
     "author": {
         "name": "Stefan Aichholzer",
@@ -29,8 +29,8 @@
     "dependencies": {},
     "devDependencies": {
         "jscs": "^3.0.7",
-        "mocha": "^3.2.0",
-        "should": "^11.2.0"
+        "mocha": "^4.1.0",
+        "should": "^13.2.0"
     },
     "engines": {
         "node": ">=7"
@@ -41,7 +41,7 @@
     "bugs": {
         "url": "https://github.com/aichholzer/salvus/issues"
     },
-    "_from": "salvus@^1.0.1",
+    "_from": "salvus@^1.0.2",
     "_npmUser": {
         "name": "aichholzer",
         "email": "theaichholzer@gmail.com"
