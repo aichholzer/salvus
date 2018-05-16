@@ -1,4 +1,6 @@
 # salvus
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/aichholzer/salvus.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/aichholzer/salvus.svg?branch=master)](https://travis-ci.org/aichholzer/salvus)
 [![Dependency status](https://gemnasium.com/badges/github.com/aichholzer/roli.svg)](https://gemnasium.com/github.com/aichholzer/roli)
 [![Downloads](https://img.shields.io/npm/dt/salvus.svg)](https://www.npmjs.com/package/salvus)
