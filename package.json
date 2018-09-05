@@ -1,52 +1,48 @@
 {
-    "name": "salvus",
-    "description": "Safely set, get and delete any property in any object.",
-    "version": "1.0.3",
-    "main": "./lib/index.js",
-    "author": {
-        "name": "Stefan Aichholzer",
-        "email": "play@analogbird.com",
-        "url": "https://github.com/aichholzer"
-    },
-    "contributors": [],
-    "maintainers": [],
-    "keywords": [
-        "object",
-        "property",
-        "properties",
-        "safely",
-        "nested",
-        "read",
-        "set",
-        "delete"
-    ],
-    "homepage": "https://github.com/aichholzer/salvus",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:aichholzer/salvus.git"
-    },
-    "license": "MIT",
-    "dependencies": {},
-    "devDependencies": {
-        "jscs": "^3.0.7",
-        "mocha": "^5.1.1",
-        "should": "^13.2.0"
-    },
-    "engines": {
-        "node": ">=7"
-    },
-    "scripts": {
-        "test": "./node_modules/mocha/bin/mocha -R progress -t 1000"
-    },
-    "bugs": {
-        "url": "https://github.com/aichholzer/salvus/issues"
-    },
-    "_from": "salvus@^1.0.2",
-    "_npmUser": {
-        "name": "aichholzer",
-        "email": "theaichholzer@gmail.com"
-    },
-    "directories": {
-        "test": "test"
-    }
+  "name": "salvus",
+  "description": "Safely set, get and delete object properties.",
+  "version": "2.0.0",
+  "main": "./lib/index.js",
+  "author": {
+    "name": "Stefan Aichholzer",
+    "email": "theaichholzer@gmail.com",
+    "url": "https://github.com/aichholzer"
+  },
+  "contributors": [],
+  "maintainers": [],
+  "keywords": [
+    "object",
+    "property",
+    "properties",
+    "safely",
+    "nested",
+    "set",
+    "get",
+    "delete"
+  ],
+  "homepage": "https://github.com/aichholzer/salvus",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aichholzer/salvus.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "mocha": "^5.1.1",
+    "prettier": "^1.14.2",
+    "should": "^13.2.0"
+  },
+  "engines": {
+    "node": "8.11.4"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R progress -t 1000"
+  },
+  "bugs": {
+    "url": "https://github.com/aichholzer/salvus/issues"
+  }
 }
